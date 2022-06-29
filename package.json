@@ -1,0 +1,30 @@
+{
+  "name": "musicify-graphql",
+  "version": "1.0.0",
+  "description": "Musicify Graphql Service",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app/index.js",
+    "start:dev": "nodemon ./app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladimirakulchik/musicify-graphql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladimirakulchik/musicify-graphql/issues"
+  },
+  "homepage": "https://github.com/vladimirakulchik/musicify-graphql#readme",
+  "dependencies": {
+    "apollo-datasource-rest": "^3.6.1",
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
