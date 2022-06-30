@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server';
 
-export const typeDefs = gql`
+export const genreType = gql`
   type Genre {
     id: ID!
     name: String
@@ -10,6 +10,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    genres: [Genre]
+    genres: [Genre!]!
+    genre(id: ID!): Genre!
   }
 `;
