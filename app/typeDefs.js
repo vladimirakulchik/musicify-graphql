@@ -1,14 +1,13 @@
 import { genreType } from './modules/genres/genreType.js';
+import { userType } from './modules/users/userType.js';
 
 const typeDefs = [
-    genreType
+    genreType,
+    userType,
 ];
 
 export { typeDefs };
 
 
 // import { mergeTypeDefs } from '@graphql-tools/merge';
-
-// const typeDefs = mergeTypeDefs([
-//     genreResolver
-// ]);
+// const typeDefs = mergeTypeDefs([]);
