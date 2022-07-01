@@ -1,21 +1,22 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 
 export class GenreAPI extends RESTDataSource {
-    constructor() {
+    constructor(baseURL) {
         super();
-        this.baseURL = 'http://localhost:3001/v1/genres/';
+        this.baseURL = baseURL;
     }
 
-    async getGenres() {
-        const genres = await this.get('', {
-            offset: 0 // get params
+    async getGenres(limit = 5, offset = 0) {
+        const genres = await this.get('/', {
+            limit,
+            offset,
         });
 
         return genres.items;
     }
 
     async getGenre(genreId) {
-        const genre = await this.get(`${genreId}`);
+        const genre = await this.get(`/${genreId}`);
 
         return genre;
     }
