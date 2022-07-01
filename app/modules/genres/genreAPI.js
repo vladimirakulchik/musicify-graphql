@@ -20,4 +20,13 @@ export class GenreAPI extends RESTDataSource {
 
         return genre;
     }
+
+    async getGenresByIds(genresIds) {
+        const promises = genresIds.map((id) => {
+            return this.getGenre(id);
+        });
+        const genres = await Promise.all(promises);
+
+        return genres;
+    }
 }
