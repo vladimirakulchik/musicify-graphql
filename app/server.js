@@ -6,5 +6,11 @@ import { dataSources } from './dataSources.js';
 export const server = new ApolloServer({
     typeDefs,
     resolvers,
-    dataSources
+    dataSources,
+    csrfPrevention: true,
+    context: ({ req }) => {
+        const authToken = req.headers.authorization || '';
+
+        return { authToken };
+    },
 });

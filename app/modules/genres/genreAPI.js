@@ -29,4 +29,52 @@ export class GenreAPI extends RESTDataSource {
 
         return genres;
     }
+
+    async createGenre(input, authToken) {
+        const genre = await this.post(
+            '/',
+            this.getGenreBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return genre;
+    }
+
+    async updateGenre(input, authToken) {
+        const genreId = input.id;
+        const genre = await this.put(
+            `/${genreId}`,
+            this.getGenreBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return genre;
+    }
+
+    async deleteGenre(genreId, authToken) {
+        const result = await this.delete(
+            `/${genreId}`,
+            {},
+            this.getAuthHeader(authToken)
+        );
+
+        return result;
+    }
+
+    getGenreBody(input) {
+        return {
+            name: input.name,
+            description: input.description,
+            country: input.country,
+            year: input.year,
+        };
+    }
+
+    getAuthHeader(authToken) {
+        return {
+            headers: {
+                'Authorization': authToken,
+            },
+        };
+    }
 }
