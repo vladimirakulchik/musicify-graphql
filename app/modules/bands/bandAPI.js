@@ -20,4 +20,53 @@ export class BandAPI extends RESTDataSource {
 
         return band;
     }
+
+    async createBand(input, authToken) {
+        const band = await this.post(
+            '/',
+            this.getBandBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return band;
+    }
+
+    async updateBand(input, authToken) {
+        const bandId = input.id;
+        const band = await this.put(
+            `/${bandId}`,
+            this.getBandBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return band;
+    }
+
+    async deleteBand(bandId, authToken) {
+        const result = await this.delete(
+            `/${bandId}`,
+            {},
+            this.getAuthHeader(authToken)
+        );
+
+        return result;
+    }
+
+    getBandBody(input) {
+        return {
+            name: input.name,
+            origin: input.origin,
+            website: input.website,
+            members: input.members,
+            genresIds: input.genresIds,
+        };
+    }
+
+    getAuthHeader(authToken) {
+        return {
+            headers: {
+                'Authorization': authToken,
+            },
+        };
+    }
 }

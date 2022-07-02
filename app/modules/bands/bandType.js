@@ -6,6 +6,12 @@ export const bandType = gql`
     band(id: ID!): Band!
   }
 
+  type Mutation {
+    createBand(input: BandInputCreate!): Band!
+    updateBand(input: BandInputUpdate!): Band!
+    deleteBand(id: ID!): DeleteBandResponse!
+  }
+
   type Band {
     id: ID!
     name: String
@@ -15,9 +21,36 @@ export const bandType = gql`
     genres: [Genre]
   }
 
+  input BandInputCreate {
+    name: String!
+    origin: String
+    members: [MemberInput]
+    website: String
+    genresIds: [String]
+  }
+
+  input BandInputUpdate {
+    id: ID!
+    name: String
+    origin: String
+    members: [MemberInput]
+    website: String
+    genresIds: [String]
+  }
+
   type Member {
     artist: String
     instrument: String
     years: [String]
+  }
+
+  input MemberInput {
+    artist: String
+    instrument: String
+    years: [String]
+  }
+
+  type DeleteBandResponse {
+    deletedCount: Int!
   }
 `;
