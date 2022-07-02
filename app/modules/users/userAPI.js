@@ -17,10 +17,24 @@ export class UserAPI extends RESTDataSource {
             '/login',
             {
                 email,
-                password
+                password,
             }
         );
 
         return token.jwt;
+    }
+
+    async createUser(input) {
+        const user = await this.post (
+            '/register',
+            {
+                firstName: input.firstName,
+                lastName: input.secondName,
+                password: input.password,
+                email: input.email,
+            }
+        );
+
+        return user;
     }
 }
