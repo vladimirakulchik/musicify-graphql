@@ -26,8 +26,23 @@ export const bandResolver = {
     },
     Band: {
         id: ({ _id }) => (_id),
+        members: async ({ members }, __, { dataSources }) => {
+            const artistsIds = members.map((member) => (member.artist));
+            const artists = await dataSources.artistAPI.getArtistsByIds(artistsIds);
+
+            return artists.map((artist, index) => {
+                return {
+                    ...artist,
+                    instrument: members[index].instrument,
+                    years: members[index].years,
+                };
+            });
+        },
         genres: ({ genresIds }, __, { dataSources }) => {
             return dataSources.genreAPI.getGenresByIds(genresIds);
         },
+    },
+    Member: {
+        id: ({ _id }) => (_id),
     },
 };

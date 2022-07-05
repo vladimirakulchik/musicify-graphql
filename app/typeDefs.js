@@ -1,11 +1,13 @@
+import { artistType } from './modules/artists/artistType.js';
+import { bandType } from './modules/bands/bandType.js';
 import { genreType } from './modules/genres/genreType.js';
 import { userType } from './modules/users/userType.js';
-import { bandType } from './modules/bands/bandType.js';
 
 const typeDefs = [
     genreType,
     userType,
     bandType,
+    artistType,
 ];
 
 export { typeDefs };

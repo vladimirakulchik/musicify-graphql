@@ -21,6 +21,15 @@ export class BandAPI extends RESTDataSource {
         return band;
     }
 
+    async getBandsByIds(bandsIds) {
+        const promises = bandsIds.map((id) => {
+            return this.getBand(id);
+        });
+        const bands = await Promise.all(promises);
+
+        return bands;
+    }
+
     async createBand(input, authToken) {
         const band = await this.post(
             '/',
