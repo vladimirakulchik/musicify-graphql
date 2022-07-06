@@ -1,6 +1,7 @@
 import { artistType } from './modules/artists/artistType.js';
 import { bandType } from './modules/bands/bandType.js';
 import { genreType } from './modules/genres/genreType.js';
+import { trackType } from './modules/tracks/trackType.js';
 import { userType } from './modules/users/userType.js';
 
 const typeDefs = [
@@ -8,6 +9,7 @@ const typeDefs = [
     userType,
     bandType,
     artistType,
+    trackType,
 ];
 
 export { typeDefs };
