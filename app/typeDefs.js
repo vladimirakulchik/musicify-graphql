@@ -1,3 +1,4 @@
+import { albumType } from './modules/albums/albumType.js';
 import { artistType } from './modules/artists/artistType.js';
 import { bandType } from './modules/bands/bandType.js';
 import { genreType } from './modules/genres/genreType.js';
@@ -10,6 +11,7 @@ const typeDefs = [
     bandType,
     artistType,
     trackType,
+    albumType,
 ];
 
 export { typeDefs };

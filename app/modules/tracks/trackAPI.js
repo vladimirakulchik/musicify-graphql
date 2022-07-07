@@ -20,4 +20,13 @@ export class TrackAPI extends RESTDataSource {
 
         return track;
     }
+
+    async getTracksByIds(tracksIds) {
+        const promises = tracksIds.map((id) => {
+            return this.getTrack(id);
+        });
+        const tracks = await Promise.all(promises);
+
+        return tracks;
+    }
 }

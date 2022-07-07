@@ -7,9 +7,28 @@ export const trackResolver = {
             return dataSources.trackAPI.getTrack(id);
         },
     },
+    // Mutation: {
+    //     createTrack: (_, { input }, context) => {
+    //         const { dataSources, authToken } = context;
+
+    //         return dataSources.trackAPI.createTrack(input, authToken);
+    //     },
+    //     updateTrack: (_, { input }, context) => {
+    //         const { dataSources, authToken } = context;
+
+    //         return dataSources.trackAPI.updateTrack(input, authToken);
+    //     },
+    //     deleteTrack: (_, { id }, context) => {
+    //         const { dataSources, authToken } = context;
+
+    //         return dataSources.trackAPI.deleteTrack(id, authToken);
+    //     },
+    // },
     Track: {
         id: ({ _id }) => (_id),
-        // album: () => {},
+        album: ({ albumId }, __, { dataSources }) => {
+            return dataSources.albumAPI.getAlbum(albumId);
+        },
         artists: ({ artistsIds }, __, { dataSources }) => {
             return dataSources.artistAPI.getArtistsByIds(artistsIds);
         },

@@ -9,6 +9,7 @@ export const trackType = gql`
   type Track {
     id: ID!
     title: String!
+    album: Album
     artists: [Artist]
     bands: [Band]
     duration: Int
@@ -16,6 +17,3 @@ export const trackType = gql`
     genres: [Genre]
   }
 `;
-
-// !!! ADD to track !!!
-// album: Album

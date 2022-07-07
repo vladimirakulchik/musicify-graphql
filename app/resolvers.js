@@ -1,4 +1,5 @@
 import { mergeResolvers } from '@graphql-tools/merge';
+import { albumResolver } from './modules/albums/albumResolver.js';
 import { artistResolver } from './modules/artists/artistResolver.js';
 import { bandResolver } from './modules/bands/bandResolver.js';
 import { genreResolver } from './modules/genres/genreResolver.js';
@@ -11,6 +12,7 @@ const resolvers = mergeResolvers([
     bandResolver,
     artistResolver,
     trackResolver,
+    albumResolver,
 ]);
 
 export { resolvers };
