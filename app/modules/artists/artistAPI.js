@@ -70,7 +70,7 @@ export class ArtistAPI extends RESTDataSource {
             birthPlace: input.birthPlace,
             country: input.country,
             bandsIds: input.bandsIds,
-            instruments: input.instruments
+            instruments: input.instruments,
         };
     }
 

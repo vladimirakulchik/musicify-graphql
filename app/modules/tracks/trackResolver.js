@@ -7,23 +7,23 @@ export const trackResolver = {
             return dataSources.trackAPI.getTrack(id);
         },
     },
-    // Mutation: {
-    //     createTrack: (_, { input }, context) => {
-    //         const { dataSources, authToken } = context;
+    Mutation: {
+        createTrack: (_, { input }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.trackAPI.createTrack(input, authToken);
-    //     },
-    //     updateTrack: (_, { input }, context) => {
-    //         const { dataSources, authToken } = context;
+            return dataSources.trackAPI.createTrack(input, authToken);
+        },
+        updateTrack: (_, { input }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.trackAPI.updateTrack(input, authToken);
-    //     },
-    //     deleteTrack: (_, { id }, context) => {
-    //         const { dataSources, authToken } = context;
+            return dataSources.trackAPI.updateTrack(input, authToken);
+        },
+        deleteTrack: (_, { id }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.trackAPI.deleteTrack(id, authToken);
-    //     },
-    // },
+            return dataSources.trackAPI.deleteTrack(id, authToken);
+        },
+    },
     Track: {
         id: ({ _id }) => (_id),
         album: ({ albumId }, __, { dataSources }) => {

@@ -29,4 +29,55 @@ export class TrackAPI extends RESTDataSource {
 
         return tracks;
     }
+
+    async createTrack(input, authToken) {
+        const track = await this.post(
+            '/',
+            this.getTrackBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return track;
+    }
+
+    async updateTrack(input, authToken) {
+        const trackId = input.id;
+        const track = await this.put(
+            `/${trackId}`,
+            this.getTrackBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return track;
+    }
+
+    async deleteTrack(trackId, authToken) {
+        const result = await this.delete(
+            `/${trackId}`,
+            {},
+            this.getAuthHeader(authToken)
+        );
+
+        return result;
+    }
+
+    getTrackBody(input) {
+        return {
+            title: input.title,
+            albumId: input.albumId,
+            artistsIds: input.artistsIds,
+            bandsIds: input.bandsIds,
+            duration: input.duration,
+            released: input.released,
+            genresIds: input.genresIds,
+        };
+    }
+
+    getAuthHeader(authToken) {
+        return {
+            headers: {
+                'Authorization': authToken,
+            },
+        };
+    }
 }
