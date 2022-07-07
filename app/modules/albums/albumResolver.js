@@ -7,23 +7,23 @@ export const albumResolver = {
             return dataSources.albumAPI.getAlbum(id);
         },
     },
-    // Mutation: {
-    //     createAlbum: (_, { input }, context) => {
-    //         const { dataSources, authToken } = context;
+    Mutation: {
+        createAlbum: (_, { input }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.albumAPI.createAlbum(input, authToken);
-    //     },
-    //     updateAlbum: (_, { input }, context) => {
-    //         const { dataSources, authToken } = context;
+            return dataSources.albumAPI.createAlbum(input, authToken);
+        },
+        updateAlbum: (_, { input }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.albumAPI.updateAlbum(input, authToken);
-    //     },
-    //     deleteAlbum: (_, { id }, context) => {
-    //         const { dataSources, authToken } = context;
+            return dataSources.albumAPI.updateAlbum(input, authToken);
+        },
+        deleteAlbum: (_, { id }, context) => {
+            const { dataSources, authToken } = context;
 
-    //         return dataSources.albumAPI.deleteAlbum(id, authToken);
-    //     },
-    // },
+            return dataSources.albumAPI.deleteAlbum(id, authToken);
+        },
+    },
     Album: {
         id: ({ _id }) => (_id),
         artists: ({ artistsIds }, __, { dataSources }) => {

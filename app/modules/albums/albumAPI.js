@@ -29,4 +29,54 @@ export class AlbumAPI extends RESTDataSource {
 
         return albums;
     }
+
+    async createAlbum(input, authToken) {
+        const album = await this.post(
+            '/',
+            this.getAlbumBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return album;
+    }
+
+    async updateAlbum(input, authToken) {
+        const albumId = input.id;
+        const album = await this.put(
+            `/${albumId}`,
+            this.getAlbumBody(input),
+            this.getAuthHeader(authToken)
+        );
+
+        return album;
+    }
+
+    async deleteAlbum(albumId, authToken) {
+        const result = await this.delete(
+            `/${albumId}`,
+            {},
+            this.getAuthHeader(authToken)
+        );
+
+        return result;
+    }
+
+    getAlbumBody(input) {
+        return {
+            name: input.name,
+            released: input.released,
+            artistsIds: input.artistsIds,
+            bandsIds: input.bandsIds,
+            trackIds: input.tracksIds,
+            genresIds: input.genresIds,
+        };
+    }
+
+    getAuthHeader(authToken) {
+        return {
+            headers: {
+                'Authorization': authToken,
+            },
+        };
+    }
 }
