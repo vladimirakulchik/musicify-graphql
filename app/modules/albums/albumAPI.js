@@ -16,6 +16,10 @@ export class AlbumAPI extends RESTDataSource {
     }
 
     async getAlbum(albumId) {
+        if (!albumId) {
+            return null;
+        }
+
         const album = await this.get(`/${albumId}`);
 
         return album;
